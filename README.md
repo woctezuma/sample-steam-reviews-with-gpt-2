@@ -8,8 +8,7 @@
 
 This repository contains Python code to sample Steam reviews, with the GPT-2 language model.
 
-![Generated review, using GPT-2](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2
-/wiki/img/cover.png)
+![Generated review, using GPT-2](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/img/cover.png)
 
 ## Requirements
 
