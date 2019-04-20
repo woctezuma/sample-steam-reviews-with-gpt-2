@@ -55,7 +55,7 @@ TODO
 
 -   [OpenAI, a blog post about GPT-2, 2019](https://openai.com/blog/better-language-models/)
 -   [Max Woolf, API for GPT-2, 2019](https://github.com/minimaxir/gpt-2-simple)
--   My repository to sample store descriptions: [`sample-steam-descriptions`](https://github.com/woctezuma/sample-steam-descriptions)
+-   My repository to sample Steam store descriptions: [`sample-steam-descriptions`](https://github.com/woctezuma/sample-steam-descriptions)
 
 [build]: <https://travis-ci.org/woctezuma/sample-steam-reviews-with-gpt-2>
 [build-image]: <https://travis-ci.org/woctezuma/sample-steam-reviews-with-gpt-2.svg?branch=master>
