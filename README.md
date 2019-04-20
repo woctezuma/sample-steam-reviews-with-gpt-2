@@ -68,4 +68,4 @@ TODO
 [codecov-image]: <https://codecov.io/gh/woctezuma/sample-steam-reviews-with-gpt-2/branch/master/graph/badge.svg>
 
 [codacy]: <https://www.codacy.com/app/woctezuma/sample-steam-reviews-with-gpt-2>
-[codacy-image]: <https://api.codacy.com/project/badge/Grade/TODO>
+[codacy-image]: <https://api.codacy.com/project/badge/Grade/8c6fdc640e014bab91e5c87d5386b523>
