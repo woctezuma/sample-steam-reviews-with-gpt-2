@@ -21,16 +21,23 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Download recent Steam reviews, written in English
+### Concatenate Steam reviews in a large text file
+
+The following code allows to download and concatenate in a large text file:
+-   recent reviews (less than 28 days old),
+-   written in English (as declared on Steam, and then checked with an external tool),
+-   and consisting of at least 150 characters.
+
+For a given `appID = app_id_number`, run:
 
 ```
-python download_review_data.py
+python export_review_data.py app_id_number
 ```
 
-### Concatenate reviews in a large text file
+For instance, to download reviews for [*Artifact*](https://store.steampowered.com/app/583950/Artifact/), whose `appID` is `583950`, run:
 
 ```
-python export_review_data.py
+python export_review_data.py 583950
 ```
 
 A data snapshot is available in [`data/`](data/).
