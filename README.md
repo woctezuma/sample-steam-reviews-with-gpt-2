@@ -60,8 +60,8 @@ Examples of generated reviews for Artifact:
 
 Results obtained after 1000 steps:
 
--   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact.md)
--   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire.md)
+-   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact)
+-   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire)
 
 ## References
 
