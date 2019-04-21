@@ -48,6 +48,16 @@ Run the [`gpt_2_for_reviews.ipynb`](gpt_2_for_reviews.ipynb) notebook on Google 
 
 ## Results
 
+Examples of generated reviews for Artifact:
+
+> I hate Artifact so I know it's not for me) but I'm fine with buying the game, the mechanics are very good and it gives me a lot of satisfaction. I don't mind the microtransaction at all. The only problem is I'm not interested in playing that much anymore (besides Hearthstone where I started) and the progression seems a bit too steep. That's not to say I'm not interested, it's just not possible to become a daily player with the casual and the draft modes combined. I'm very interested in playing the expert modes and doing constructed, if that's your thing I'd probably consider it.
+
+> I hate Artifact, this game is literally pay 2 win and pay 2 lose. The only way to get new cards is to buy them at the shop. You cannot earn cards by playing the game. I am a computer player, I achieved a lot with computer games. I love the game. I played it a lot. I don't like it. Why? It's not fun. I'm not going to argue. The game is very simple, but I have spent a good amount of money on it, so it's not fun at all.
+
+> I love Artifact, so I bought it. I can't talk about the monetization, there is no way to earn cards for free. I don't want to take the time to talk about the other aspects of the game, like what cards you can get, what sort of decks you can play, and how things like hero spawns work. Please don't buy this game, it's not worth it at the moment. I've made more money from phantom draft than I would buying packs in Hearthstone. The price of the game is too expensive for my taste. I can't refund it, it's not worth it.
+
+> I love Artifact, I love its gameplay and I love its lore. But I also really love the monetization. I paid $15 and got Artifact for the first time, and it doesn't even cost that much to play competitively. I also got to actually buy cards that are worth more than the price of a pack, and it's not even gambling between packs! And there's the business model. You can buy cards, sell them, trade them. It's really quite cool. And the lore. It's really nice. I love the lore of Dota 2. It's deep and complex and I love it. But I love the fact that you can buy cards from other players. And the fact that you can trade them at will. The only way to get cards is by buying them. So this is the first TCG I've ever played (and a really good one at that), but Valve has really outdone them. They've really polished it up and I really like it. They have a free draft mode which is pretty cool. They have free tournaments which are really fun. They have free hero emote and they changed it from a very powerful card, so you can play them in the free modes which are really fun. 
+
 Results obtained after 1000 steps:
 
 -   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact.md)
