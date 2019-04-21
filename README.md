@@ -48,14 +48,10 @@ Run the [`gpt_2_for_reviews.ipynb`](gpt_2_for_reviews.ipynb) notebook on Google 
 
 ## Results
 
-Seed:
-```
-```
+Results obtained after 1000 steps:
 
-Generated samples:
-```
-TODO
-```
+-   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact.md)
+-   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire.md)
 
 ## References
 
