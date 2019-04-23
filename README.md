@@ -68,6 +68,7 @@ Results obtained after 1000 steps:
 
 -   [OpenAI, a blog post about GPT-2, 2019](https://openai.com/blog/better-language-models/)
 -   [Max Woolf, API for GPT-2, 2019](https://github.com/minimaxir/gpt-2-simple)
+-   OpenAI's GPT-2 as [a Steam curator](https://store.steampowered.com/curator/34944761-OpenAI%2527s-GPT-2/),
 -   My repository to sample Steam store descriptions: [`sample-steam-descriptions`](https://github.com/woctezuma/sample-steam-descriptions)
 -   My other repository to sample reviews for Steam games: [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
 
