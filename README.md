@@ -62,6 +62,7 @@ Results obtained after 1000 steps:
 
 -   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact)
 -   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire)
+-   [etc.](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/)
 
 ## References
 
