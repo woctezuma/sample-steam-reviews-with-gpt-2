@@ -6,7 +6,7 @@ from langdetect import detect, DetectorFactory, lang_detect_exception
 
 def download_recent_reviews(app_id):
     request_params = dict()
-    request_params['filter'] = 'all'
+    request_params['filter'] = 'recent'
     request_params['day_range'] = '28'
     request_params['language'] = 'english'
 
