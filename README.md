@@ -64,6 +64,12 @@ Results obtained after 1000 steps:
 -   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire)
 -   [etc.](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/)
 
+NB: Due to the large number of training steps (about 1000) with respect to the small number of reviews (about 100), the algorithm may copy real reviews.
+To avoid this behavior, one could:
+-   (recommended) increase the temperature (by default, 0.7),
+-   train on a larger dataset of reviews, e.g. using all the English reviews,
+-   decrease the number of training steps.
+
 ## References
 
 
