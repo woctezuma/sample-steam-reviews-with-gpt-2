@@ -4,10 +4,11 @@ import steamreviews
 from langdetect import detect, DetectorFactory, lang_detect_exception
 
 
-def download_recent_reviews(app_id):
+def download_recent_reviews(app_id, num_days=28):
     request_params = dict()
     request_params['filter'] = 'recent'
-    request_params['day_range'] = '28'
+    if int(num_days) > 0:
+        request_params['day_range'] = str(num_days)
     request_params['language'] = 'english'
 
     review_dict, _ = steamreviews.download_reviews_for_app_id(app_id=app_id,
@@ -157,10 +158,10 @@ def concatenate_reviews(output_text_file_name,
     return
 
 
-def apply_workflow_for_app_id(app_id):
+def apply_workflow_for_app_id(app_id, num_days=28):
     output_text_file_name = get_txt_output_file_name(app_id)
 
-    reviews = download_recent_reviews(app_id)
+    reviews = download_recent_reviews(app_id, num_days)
 
     review_ids = filter_reviews(reviews)
 
@@ -170,14 +171,22 @@ def apply_workflow_for_app_id(app_id):
 
 
 def main(argv):
+    default_num_days = 28
+
     if len(argv) == 0:
         app_id = 583950
+        num_days = default_num_days
         print('No detected command-line argument. AppID automatically set to {}.'.format(app_id))
     else:
         app_id = argv[0]
         print('A command-line argument is detected. AppID set to {}.'.format(app_id))
 
-    apply_workflow_for_app_id(app_id)
+        try:
+            num_days = int(argv[1])
+        except IndexError:
+            num_days = default_num_days
+
+    apply_workflow_for_app_id(app_id, num_days)
 
     return
 
