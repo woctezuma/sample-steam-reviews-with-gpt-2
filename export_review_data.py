@@ -19,8 +19,18 @@ def download_recent_reviews(app_id, num_days=28):
     return reviews
 
 
+def get_review_url(author_id, app_id=None):
+    review_url = 'https://steamcommunity.com/profiles/' + str(author_id) + '/recommended/'
+
+    if app_id is not None:
+        review_url += str(app_id) + '/'
+
+    return review_url
+
+
 def detect_language(reviews,
                     review_ids=None,
+                    app_id=None,
                     verbose=True):
     if review_ids is None:
         review_ids = reviews.keys()
@@ -39,6 +49,9 @@ def detect_language(reviews,
             detected_languages[review_id] = detect(review_content)
         except lang_detect_exception.LangDetectException:
             detected_languages[review_id] = 'unknown'
+            author_id = reviews[review_id]['author']['steamid']
+            review_url = get_review_url(author_id, app_id=app_id)
+            print('[review n°{}] {}'.format(review_id, review_url))
             print(review_content)
 
     return detected_languages
@@ -74,11 +87,12 @@ def filter_out_short_reviews(reviews,
 
 def filter_out_reviews_not_detected_as_written_in_english(reviews,
                                                           review_ids=None,
+                                                          app_id=None,
                                                           expected_language_code='en'):
     if review_ids is None:
         review_ids = reviews.keys()
 
-    detected_languages = detect_language(reviews, review_ids)
+    detected_languages = detect_language(reviews, review_ids, app_id=app_id)
 
     print('Filtering out reviews which were not detected as written in {}.'.format(expected_language_code))
     review_ids = list(filter(lambda x: detected_languages[x] == expected_language_code, review_ids))
@@ -88,13 +102,13 @@ def filter_out_reviews_not_detected_as_written_in_english(reviews,
     return review_ids
 
 
-def filter_reviews(reviews):
+def filter_reviews(reviews, app_id=None):
     review_ids = list(reviews.keys())
     print('#reviews = {}'.format(len(review_ids)))
 
     review_ids = filter_out_reviews_not_written_in_english(reviews, review_ids)
     review_ids = filter_out_short_reviews(reviews, review_ids)
-    review_ids = filter_out_reviews_not_detected_as_written_in_english(reviews, review_ids)
+    review_ids = filter_out_reviews_not_detected_as_written_in_english(reviews, review_ids, app_id=app_id)
 
     return review_ids
 
@@ -163,7 +177,7 @@ def apply_workflow_for_app_id(app_id, num_days=28):
 
     reviews = download_recent_reviews(app_id, num_days)
 
-    review_ids = filter_reviews(reviews)
+    review_ids = filter_reviews(reviews, app_id=app_id)
 
     concatenate_reviews(output_text_file_name, reviews, review_ids)
 
