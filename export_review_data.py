@@ -124,15 +124,23 @@ def get_txt_output_file_name(app_id):
     return output_text_file_name
 
 
+def get_line_separator():
+    line_separator = '\n'
+
+    return line_separator
+
+
 def trim_review_content(review_content):
     # Remove empty lines
 
+    line_separator = get_line_separator()
+
     review_content_chunks = [
-        line.strip() for line in review_content.split('\n')
+        line.strip() for line in review_content.split(line_separator)
         if len(line.strip()) > 0
     ]
 
-    trimmed_review_content = '\n'.join(review_content_chunks)
+    trimmed_review_content = line_separator.join(review_content_chunks)
 
     return trimmed_review_content
 
