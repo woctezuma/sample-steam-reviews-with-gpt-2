@@ -145,9 +145,22 @@ def trim_review_content(review_content):
     return trimmed_review_content
 
 
+def get_model_token_start():
+    model_token_start = '<|startoftext|>'
+
+    return model_token_start
+
+
+def get_model_token_end():
+    model_token_end = '<|endoftext|>'
+
+    return model_token_end
+
+
 def concatenate_reviews(output_text_file_name,
                         reviews,
                         review_ids=None,
+                        use_model_token_delimiters=True,
                         remove_empty_lines=True):
     if review_ids is None:
         review_ids = reviews.keys()
@@ -168,9 +181,15 @@ def concatenate_reviews(output_text_file_name,
 
     # Concatenate as a large str
 
-    line_separator = '\n'
+    if use_model_token_delimiters:
+        review_separator = get_model_token_end() + get_line_separator() + get_model_token_start()
+    else:
+        review_separator = get_line_separator()
 
-    concatenated_reviews = line_separator.join(review_list)
+    concatenated_reviews = review_separator.join(review_list)
+
+    if use_model_token_delimiters:
+        concatenated_reviews = get_model_token_start() + concatenated_reviews + get_model_token_end()
 
     # Save to disk
 
