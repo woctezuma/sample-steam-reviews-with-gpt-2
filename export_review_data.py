@@ -199,20 +199,24 @@ def concatenate_reviews(output_text_file_name,
     return
 
 
-def apply_workflow_for_app_id(app_id, num_days=28):
+def apply_workflow_for_app_id(app_id,
+                              num_days=28,
+                              use_model_token_delimiters=True):
     output_text_file_name = get_txt_output_file_name(app_id)
 
     reviews = download_recent_reviews(app_id, num_days)
 
     review_ids = filter_reviews(reviews, app_id=app_id)
 
-    concatenate_reviews(output_text_file_name, reviews, review_ids)
+    concatenate_reviews(output_text_file_name, reviews, review_ids,
+                        use_model_token_delimiters=use_model_token_delimiters)
 
     return
 
 
 def main(argv):
     default_num_days = 28
+    use_model_token_delimiters = True
 
     if len(argv) == 0:
         app_id = 583950
@@ -227,7 +231,9 @@ def main(argv):
         except IndexError:
             num_days = default_num_days
 
-    apply_workflow_for_app_id(app_id, num_days)
+    apply_workflow_for_app_id(app_id,
+                              num_days=num_days,
+                              use_model_token_delimiters=use_model_token_delimiters)
 
     return
 
