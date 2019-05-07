@@ -58,11 +58,16 @@ Examples of generated reviews for Artifact:
 
 > I love Artifact, I love its gameplay and I love its lore. But I also really love the monetization. I paid $15 and got Artifact for the first time, and it doesn't even cost that much to play competitively. I also got to actually buy cards that are worth more than the price of a pack, and it's not even gambling between packs! And there's the business model. You can buy cards, sell them, trade them. It's really quite cool. And the lore. It's really nice. I love the lore of Dota 2. It's deep and complex and I love it. But I love the fact that you can buy cards from other players. And the fact that you can trade them at will. The only way to get cards is by buying them. So this is the first TCG I've ever played (and a really good one at that), but Valve has really outdone them. They've really polished it up and I really like it. They have a free draft mode which is pretty cool. They have free tournaments which are really fun. They have free hero emote and they changed it from a very powerful card, so you can play them in the free modes which are really fun. 
 
-Results obtained after 1000 steps:
+Results obtained after 1000 steps using the 117M model:
 
 -   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact)
 -   [Slay the Spire](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Slay_the_Spire)
 -   [etc.](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/)
+
+Results obtained after 1000 steps using the 345M model:
+
+-   [Artifact](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Artifact_345M)
+-   [Crusader Kings II](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/wiki/Crusader_Kings_II_345M)
 
 NB: Due to the large number of training steps (about 1000) with respect to the small number of reviews (about 100), the algorithm may copy real reviews.
 To avoid this behavior, one could:
