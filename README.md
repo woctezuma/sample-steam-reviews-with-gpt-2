@@ -82,6 +82,7 @@ To avoid this behavior, one could:
 -   [Max Woolf, API for GPT-2, 2019](https://github.com/minimaxir/gpt-2-simple)
 -   [GPT-2 Neural Network Poetry, 2019](https://www.gwern.net/GPT-2)
 -   OpenAI's GPT-2 as [a Steam curator](https://store.steampowered.com/curator/34944761-OpenAI%2527s-GPT-2/),
+-   My repository with checkpoints saved while fine-tuning GPT-2: [`sample-steam-reviews-with-gpt-2-checkpoints`](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2-checkpoints),
 -   My repository to sample Steam store descriptions: [`sample-steam-descriptions`](https://github.com/woctezuma/sample-steam-descriptions)
 -   My other repository to sample reviews for Steam games: [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
 
