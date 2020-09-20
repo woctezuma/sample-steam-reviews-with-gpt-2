@@ -45,6 +45,7 @@ A data snapshot is available in [`data/`](data/).
 ### Fine-tune a pre-trained GPT-2 model
 
 Run the [`gpt_2_for_reviews.ipynb`][gpt_2_for_reviews] notebook on Google Colab, which relies on the [`gpt_2_simple`](https://github.com/minimaxir/gpt-2-simple) package.
+[![Open In Colab][colab-badge]][gpt_2_for_reviews]
 
 ## Results
 
@@ -99,3 +100,5 @@ To avoid this behavior, one could:
 [codacy-image]: <https://api.codacy.com/project/badge/Grade/8c6fdc640e014bab91e5c87d5386b523>
 
 [gpt_2_for_reviews]: <https://colab.research.google.com/github/woctezuma/sample-steam-reviews-with-gpt-2/blob/master/gpt_2_for_reviews.ipynb>
+
+[colab-badge]: <https://colab.research.google.com/assets/colab-badge.svg>
