@@ -84,8 +84,8 @@ To avoid this behavior, one could:
 -   My repository to sample Steam store descriptions: [`sample-steam-descriptions`](https://github.com/woctezuma/sample-steam-descriptions)
 -   My other repository to sample reviews for Steam games: [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
 
-[build]: <https://travis-ci.org/woctezuma/sample-steam-reviews-with-gpt-2>
-[build-image]: <https://travis-ci.org/woctezuma/sample-steam-reviews-with-gpt-2.svg?branch=master>
+[build]: <https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/actions>
+[build-image]: <https://github.com/woctezuma/sample-steam-reviews-with-gpt-2/workflows/Python package/badge.svg?branch=master>
 
 [pyup]: <https://pyup.io/repos/github/woctezuma/sample-steam-reviews-with-gpt-2/>
 [dependency-image]: <https://pyup.io/repos/github/woctezuma/sample-steam-reviews-with-gpt-2/shield.svg>
