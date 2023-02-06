@@ -1,11 +1,11 @@
 import sys
 
 import steamreviews
-from langdetect import detect, DetectorFactory, lang_detect_exception
+from langdetect import DetectorFactory, detect, lang_detect_exception
 
 
 def download_recent_reviews(app_id, num_days=28):
-    request_params = dict()
+    request_params = {}
     request_params['filter'] = 'recent'
     if int(num_days) > 0:
         request_params['day_range'] = str(num_days)
@@ -36,7 +36,7 @@ def detect_language(reviews, review_ids=None, app_id=None, verbose=True):
     if review_ids is None:
         review_ids = reviews.keys()
 
-    detected_languages = dict()
+    detected_languages = {}
 
     DetectorFactory.seed = 0
 
@@ -57,7 +57,7 @@ def detect_language(reviews, review_ids=None, app_id=None, verbose=True):
             detected_languages[review_id] = 'unknown'
             author_id = reviews[review_id]['author']['steamid']
             review_url = get_review_url(author_id, app_id=app_id)
-            print('[review n°{}] {}'.format(review_id, review_url))
+            print(f'[review n°{review_id}] {review_url}')
             print(review_content)
 
     return detected_languages
@@ -71,12 +71,12 @@ def filter_out_reviews_not_written_in_english(
     if review_ids is None:
         review_ids = reviews.keys()
 
-    print('Filtering out reviews which were not written in {}.'.format(language_str))
+    print(f'Filtering out reviews which were not written in {language_str}.')
     review_ids = list(
         filter(lambda x: reviews[x]['language'] == language_str, review_ids),
     )
 
-    print('#reviews = {}'.format(len(review_ids)))
+    print(f'#reviews = {len(review_ids)}')
 
     return review_ids
 
@@ -94,7 +94,7 @@ def filter_out_short_reviews(reviews, review_ids=None, length_threshold=150):
         filter(lambda x: len(reviews[x]['review']) >= length_threshold, review_ids),
     )
 
-    print('#reviews = {}'.format(len(review_ids)))
+    print(f'#reviews = {len(review_ids)}')
 
     return review_ids
 
@@ -119,14 +119,14 @@ def filter_out_reviews_not_detected_as_written_in_english(
         filter(lambda x: detected_languages[x] == expected_language_code, review_ids),
     )
 
-    print('#reviews = {}'.format(len(review_ids)))
+    print(f'#reviews = {len(review_ids)}')
 
     return review_ids
 
 
 def filter_reviews(reviews, app_id=None):
     review_ids = list(reviews.keys())
-    print('#reviews = {}'.format(len(review_ids)))
+    print(f'#reviews = {len(review_ids)}')
 
     review_ids = filter_out_reviews_not_written_in_english(reviews, review_ids)
     review_ids = filter_out_short_reviews(reviews, review_ids)
@@ -263,7 +263,7 @@ def main(argv):
         )
     else:
         app_id = argv[0]
-        print('A command-line argument is detected. AppID set to {}.'.format(app_id))
+        print(f'A command-line argument is detected. AppID set to {app_id}.')
 
         try:
             num_days = int(argv[1])
