@@ -11,8 +11,10 @@ def download_recent_reviews(app_id, num_days=28):
         request_params['day_range'] = str(num_days)
     request_params['language'] = 'english'
 
-    review_dict, _ = steamreviews.download_reviews_for_app_id(app_id=app_id,
-                                                              chosen_request_params=request_params)
+    review_dict, _ = steamreviews.download_reviews_for_app_id(
+        app_id=app_id,
+        chosen_request_params=request_params,
+    )
 
     reviews = review_dict['reviews']
 
@@ -20,7 +22,9 @@ def download_recent_reviews(app_id, num_days=28):
 
 
 def get_review_url(author_id, app_id=None):
-    review_url = 'https://steamcommunity.com/profiles/' + str(author_id) + '/recommended/'
+    review_url = (
+        'https://steamcommunity.com/profiles/' + str(author_id) + '/recommended/'
+    )
 
     if app_id is not None:
         review_url += str(app_id) + '/'
@@ -28,10 +32,7 @@ def get_review_url(author_id, app_id=None):
     return review_url
 
 
-def detect_language(reviews,
-                    review_ids=None,
-                    app_id=None,
-                    verbose=True):
+def detect_language(reviews, review_ids=None, app_id=None, verbose=True):
     if review_ids is None:
         review_ids = reviews.keys()
 
@@ -41,7 +42,12 @@ def detect_language(reviews,
 
     for count, review_id in enumerate(review_ids):
         if verbose and (count + 1) % 1000 == 0:
-            print('Reviews processed by langdetect: {}/{}.'.format(count + 1, len(review_ids)))
+            print(
+                'Reviews processed by langdetect: {}/{}.'.format(
+                    count + 1,
+                    len(review_ids),
+                ),
+            )
 
         review_content = reviews[review_id]['review']
 
@@ -57,45 +63,61 @@ def detect_language(reviews,
     return detected_languages
 
 
-def filter_out_reviews_not_written_in_english(reviews,
-                                              review_ids=None,
-                                              language_str='english'):
+def filter_out_reviews_not_written_in_english(
+    reviews,
+    review_ids=None,
+    language_str='english',
+):
     if review_ids is None:
         review_ids = reviews.keys()
 
     print('Filtering out reviews which were not written in {}.'.format(language_str))
-    review_ids = list(filter(lambda x: reviews[x]['language'] == language_str, review_ids))
+    review_ids = list(
+        filter(lambda x: reviews[x]['language'] == language_str, review_ids),
+    )
 
     print('#reviews = {}'.format(len(review_ids)))
 
     return review_ids
 
 
-def filter_out_short_reviews(reviews,
-                             review_ids=None,
-                             length_threshold=150):
+def filter_out_short_reviews(reviews, review_ids=None, length_threshold=150):
     if review_ids is None:
         review_ids = reviews.keys()
 
-    print('Filtering out reviews with strictly fewer than {} characters.'.format(length_threshold))
-    review_ids = list(filter(lambda x: len(reviews[x]['review']) >= length_threshold, review_ids))
+    print(
+        'Filtering out reviews with strictly fewer than {} characters.'.format(
+            length_threshold,
+        ),
+    )
+    review_ids = list(
+        filter(lambda x: len(reviews[x]['review']) >= length_threshold, review_ids),
+    )
 
     print('#reviews = {}'.format(len(review_ids)))
 
     return review_ids
 
 
-def filter_out_reviews_not_detected_as_written_in_english(reviews,
-                                                          review_ids=None,
-                                                          app_id=None,
-                                                          expected_language_code='en'):
+def filter_out_reviews_not_detected_as_written_in_english(
+    reviews,
+    review_ids=None,
+    app_id=None,
+    expected_language_code='en',
+):
     if review_ids is None:
         review_ids = reviews.keys()
 
     detected_languages = detect_language(reviews, review_ids, app_id=app_id)
 
-    print('Filtering out reviews which were not detected as written in {}.'.format(expected_language_code))
-    review_ids = list(filter(lambda x: detected_languages[x] == expected_language_code, review_ids))
+    print(
+        'Filtering out reviews which were not detected as written in {}.'.format(
+            expected_language_code,
+        ),
+    )
+    review_ids = list(
+        filter(lambda x: detected_languages[x] == expected_language_code, review_ids),
+    )
 
     print('#reviews = {}'.format(len(review_ids)))
 
@@ -108,7 +130,11 @@ def filter_reviews(reviews, app_id=None):
 
     review_ids = filter_out_reviews_not_written_in_english(reviews, review_ids)
     review_ids = filter_out_short_reviews(reviews, review_ids)
-    review_ids = filter_out_reviews_not_detected_as_written_in_english(reviews, review_ids, app_id=app_id)
+    review_ids = filter_out_reviews_not_detected_as_written_in_english(
+        reviews,
+        review_ids,
+        app_id=app_id,
+    )
 
     return review_ids
 
@@ -136,7 +162,8 @@ def trim_review_content(review_content):
     line_separator = get_line_separator()
 
     review_content_chunks = [
-        line.strip() for line in review_content.split(line_separator)
+        line.strip()
+        for line in review_content.split(line_separator)
         if len(line.strip()) > 0
     ]
 
@@ -157,11 +184,13 @@ def get_model_token_end():
     return model_token_end
 
 
-def concatenate_reviews(output_text_file_name,
-                        reviews,
-                        review_ids=None,
-                        use_model_token_delimiters=True,
-                        remove_empty_lines=True):
+def concatenate_reviews(
+    output_text_file_name,
+    reviews,
+    review_ids=None,
+    use_model_token_delimiters=True,
+    remove_empty_lines=True,
+):
     if review_ids is None:
         review_ids = reviews.keys()
 
@@ -182,14 +211,18 @@ def concatenate_reviews(output_text_file_name,
     # Concatenate as a large str
 
     if use_model_token_delimiters:
-        review_separator = get_model_token_end() + get_line_separator() + get_model_token_start()
+        review_separator = (
+            get_model_token_end() + get_line_separator() + get_model_token_start()
+        )
     else:
         review_separator = get_line_separator()
 
     concatenated_reviews = review_separator.join(review_list)
 
     if use_model_token_delimiters:
-        concatenated_reviews = get_model_token_start() + concatenated_reviews + get_model_token_end()
+        concatenated_reviews = (
+            get_model_token_start() + concatenated_reviews + get_model_token_end()
+        )
 
     # Save to disk
 
@@ -199,17 +232,19 @@ def concatenate_reviews(output_text_file_name,
     return
 
 
-def apply_workflow_for_app_id(app_id,
-                              num_days=28,
-                              use_model_token_delimiters=True):
+def apply_workflow_for_app_id(app_id, num_days=28, use_model_token_delimiters=True):
     output_text_file_name = get_txt_output_file_name(app_id)
 
     reviews = download_recent_reviews(app_id, num_days)
 
     review_ids = filter_reviews(reviews, app_id=app_id)
 
-    concatenate_reviews(output_text_file_name, reviews, review_ids,
-                        use_model_token_delimiters=use_model_token_delimiters)
+    concatenate_reviews(
+        output_text_file_name,
+        reviews,
+        review_ids,
+        use_model_token_delimiters=use_model_token_delimiters,
+    )
 
     return
 
@@ -221,7 +256,11 @@ def main(argv):
     if len(argv) == 0:
         app_id = 583950
         num_days = default_num_days
-        print('No detected command-line argument. AppID automatically set to {}.'.format(app_id))
+        print(
+            'No detected command-line argument. AppID automatically set to {}.'.format(
+                app_id,
+            ),
+        )
     else:
         app_id = argv[0]
         print('A command-line argument is detected. AppID set to {}.'.format(app_id))
@@ -231,9 +270,11 @@ def main(argv):
         except IndexError:
             num_days = default_num_days
 
-    apply_workflow_for_app_id(app_id,
-                              num_days=num_days,
-                              use_model_token_delimiters=use_model_token_delimiters)
+    apply_workflow_for_app_id(
+        app_id,
+        num_days=num_days,
+        use_model_token_delimiters=use_model_token_delimiters,
+    )
 
     return
 
